@@ -28,7 +28,7 @@ public:
 	
 	Node newNode(const int data);
 	
-	void addNode(const int data);
+	void addNode(const int data, BST * current);
 	// void deleteNode(const int data);
 
 	
