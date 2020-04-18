@@ -38,18 +38,30 @@ int main()
 	// read in data
 	inFile.open("CSS343_A1_F1.txt");
 
-	// check if it failed
+	// check if file was opened if failed end program with 1 (error state)
 	if (inFile.fail())
 	{
-		return 1; // ????????????????????????????????????????
+		return 1; 
 	}
 
-	// the BST works !!!!!!!!!!!
+	// Create BST with file information
 	while (inFile >> data)							
 	{
 		// keep top
 		tree = tree->addNode(tree, data);
 	}
+
+
+	// delete the tree
+	tree = tree->deleteTree();
+
+	// testing for delete tree
+	/*
+	if (tree == nullptr)
+	{
+		cout << "was deleted!";
+	}
+	*/
 
 	system("pause");
 	return 0;

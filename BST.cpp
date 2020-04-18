@@ -107,7 +107,7 @@ BST * BST::addNode(BST* root, const int data) // root == curr (current)
 	//}
 
 	// if data is smaller then current
-	else if (data < root->data) // EXCEPTION (this->curr was 0xCCCCCC) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!(bigger problem at moment)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	else if (data < root->data) 
 	{
 		root->left = addNode(root->left, data);
 	}
@@ -119,4 +119,25 @@ BST * BST::addNode(BST* root, const int data) // root == curr (current)
 	}
 
 	return root;
+}
+
+BST * BST::deleteTree()
+{
+	// go all the way to the right then all the way to the left then delete 
+	
+	if (right != nullptr)
+	{
+		right = right->deleteTree();
+	}
+
+	if (left != nullptr)
+	{
+		left = left->deleteTree();
+	}
+
+	delete this;
+	
+	return nullptr;
+	
+	// repeat till all gone
 }

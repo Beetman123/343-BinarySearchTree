@@ -27,7 +27,9 @@ public:
 	//void addNode(const int data);
 	BST * addNode(BST* root, const int data);
 
-	void deleteTree(); // deletes entire tree
+	BST * deleteTree();
+
+	//void deleteTree(); // deletes entire tree
 
 	// void deleteNode (const int data) // deletes only one Node
 
