@@ -7,9 +7,16 @@ using namespace std;
 
 BST::BST()
 {
-	head = nullptr;
-	curr = nullptr;
-	temp = nullptr;
+	left = nullptr;
+	right = nullptr;
+	data = NULL;
+}
+
+BST::BST(const int value)
+{
+	left = nullptr;
+	right = nullptr;
+	data = value;
 }
 
 // error is that none of it is saved !!!!!!!!!!!!!!!!!
@@ -73,41 +80,43 @@ void BST::addNode(const int data)
 }
 */
 
+//Node BST::newNode(const int data)
+//{
+//	Node newNode;
+//	newNode.data = data;
+//	newNode.left = nullptr;
+//	newNode.right = nullptr;
+//
+//	return newNode;
+//}
 
-Node BST::newNode(const int data)
-{
-	Node newNode;
-	newNode.data = data;
-	newNode.left = nullptr;
-	newNode.right = nullptr;
-
-	return newNode;
-}
-
-void BST::addNode(const int data, BST* current)
+BST * BST::addNode(BST* root, const int data) // root == curr (current)
 {
 	// if empty
-	if (head == nullptr)
+	if (!root)
 	{
-		head = &newNode(data);
-		curr = head; // so to get rid of an error
+		//head = &newNode(data);
+		//curr = head; // so to get rid of an error
+		return new BST(data);
 	}
 
 	// if current is empty
-	else if (curr == nullptr) // never got hit (curr was undefined but not nullptr)
-	{
-		curr = &newNode(data);
-	}
+	//else if (curr == nullptr) // never got hit (curr was undefined but not nullptr)
+	//{
+	//	curr = &newNode(data);
+	//}
 
 	// if data is smaller then current
-	else if (data < curr->data) // EXCEPTION (this->curr was 0xCCCCCC) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!(bigger problem at moment)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	else if (data < root->data) // EXCEPTION (this->curr was 0xCCCCCC) !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!(bigger problem at moment)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	{
-		curr = curr->left;
+		root->left = addNode(root->left, data);
 	}
 
 	// if data is larger then current
-	else if (data > curr->data)
+	else if (data > root->data)
 	{
-		curr = curr->right;
+		root->right = addNode(root->right, data);
 	}
+
+	return root;
 }

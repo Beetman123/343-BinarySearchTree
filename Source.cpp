@@ -33,7 +33,7 @@ int main()
 	ifstream inFile;
 	int data;
 
-	BST tree; // !!!!!!!!!!!!!!!!
+	BST * tree = nullptr; // !!!!!!!!!!!!!!!!
 
 	// read in data
 	inFile.open("CSS343_A1_F1.txt");
@@ -44,12 +44,27 @@ int main()
 		return 1; // ????????????????????????????????????????
 	}
 
-	while (inFile >> data)							// does this work ???
+	// the BST works !!!!!!!!!!!
+	while (inFile >> data)							
 	{
 		// keep top
-		tree.addNode(data);       // ERROR: when function ends the data is erased and is rendered null !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		tree = tree->addNode(tree, data);
 	}
 
 	system("pause");
 	return 0;
 }
+/*
+
+I march before armies, a thousand salute me.
+My fall can bring victory, but no one would shoot me.
+The wind is my lover, one - legged am I.
+Name me and see me at home in the sky.
+
+I march before armies, a thousand salute me.
+My fall can bring victory, but no one would shoot me.
+Thou one - legged I am, 
+The wind is my lover, one - legged am I.
+Name me and see me at home in the sky.
+
+*/
