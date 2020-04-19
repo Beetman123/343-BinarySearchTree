@@ -121,6 +121,137 @@ BST * BST::addNode(BST* root, const int data) // root == curr (current)
 	return root;
 }
 
+int BST::largestBranch()
+{
+	int sizeLeft = 0,
+		sizeRight = 0;
+
+	// check left
+	if (right != nullptr)
+	{
+		sizeRight = right->largestBranch();
+	}
+
+	if (left != nullptr)
+	{
+		sizeLeft = left->largestBranch();
+	}
+
+	// if both are empty
+	if (left == nullptr && right == nullptr)
+	{
+		return 1;
+	}
+
+	// if left is bigger then right
+	else if (sizeLeft > sizeRight)
+	{
+		return 1 + sizeLeft;
+	}
+
+	// if right is bigger then left 
+	else
+	{
+		return 1 + sizeRight;
+	}
+}
+
+int BST::smallestBranch()
+{
+	int sizeLeft = 0,
+		sizeRight = 0;
+
+	// check left
+	if (right != nullptr)
+	{
+		sizeRight = right->smallestBranch();
+	}
+
+	if (left != nullptr)
+	{
+		sizeLeft = left->smallestBranch();
+	}
+
+	// if both are empty
+	if (left == nullptr && right == nullptr)
+	{
+		return 1;
+	}
+
+	// if left is bigger then right
+	else if (sizeLeft > sizeRight)
+	{
+		return 1 + sizeRight;
+	}
+
+	// if right is bigger then left 
+	else
+	{
+		return 1 + sizeLeft;
+	}
+}
+
+// NOT GIVING CORRECT ANSWER
+int BST::numberOfNodes()
+{
+	int sizeLeft = 0,
+		sizeRight = 0;
+
+	// check left
+	if (right != nullptr)
+	{
+		sizeRight = right->largestBranch();
+	}
+
+	if (left != nullptr)
+	{
+		sizeLeft = left->largestBranch();
+	}
+
+	return 1 + sizeLeft + sizeRight;
+}
+
+bool BST::balancedTree()
+{
+	// if the difference between them is more then 1
+	if (this->largestBranch() - this->smallestBranch() > 1)
+	{
+		return false;
+	}
+	
+	else
+	{
+		return true;
+	}
+}
+
+bool BST::complete()
+{
+	// check that all the nodes are only one difference apart
+	if (!this->balancedTree())
+	{
+		return false;
+	}
+
+	// if there are no seperate levels then it is automaticly complete
+	else if (this->largestBranch() == this->smallestBranch())
+	{
+		return true;
+	}
+
+	// go from left to right checking that the length is equal to largestBranch 
+	// until it is equal to smallest branch
+	// iff any after that are equal to largestBranch 
+	// then return false 
+	// else return true
+	else
+	{
+		int length;
+
+	}
+
+}
+
 BST * BST::deleteTree()
 {
 	// go all the way to the right then all the way to the left then delete 

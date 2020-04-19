@@ -33,7 +33,7 @@ int main()
 	ifstream inFile;
 	int data;
 
-	BST * tree = nullptr; // !!!!!!!!!!!!!!!!
+	BST* tree = nullptr; // !!!!!!!!!!!!!!!!
 
 	// read in data
 	inFile.open("CSS343_A1_F1.txt");
@@ -41,16 +41,44 @@ int main()
 	// check if file was opened if failed end program with 1 (error state)
 	if (inFile.fail())
 	{
-		return 1; 
+		return 1;
 	}
 
 	// Create BST with file information
-	while (inFile >> data)							
+	while (inFile >> data)
 	{
 		// keep top
 		tree = tree->addNode(tree, data);
 	}
 
+	// Determine the largest 
+	cout << "The height of the largest branch of the tree is " << tree->largestBranch() << endl;
+
+	// and smallest branch height
+	cout << "The height of the smallest branch of the tree is " << tree->smallestBranch() << endl;
+
+	// Determine the number of nodes in the tree
+	cout << "The number of the nodes in the tree is " << tree->numberOfNodes() << endl;
+
+	// Determine if the tree is balanced
+	if (tree->balancedTree())
+	{
+		cout << "The tree is balanced" << endl;
+	}
+	else
+	{
+		cout << "The tree is not balanced" << endl;
+	}
+
+	// Determine if the tree is complete 
+	if (tree->complete())
+	{
+		cout << "The tree is complete" << endl;
+	}
+	else
+	{
+		cout << "The tree is not complete" << endl;
+	}
 
 	// delete the tree
 	tree = tree->deleteTree();

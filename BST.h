@@ -27,6 +27,18 @@ public:
 	//void addNode(const int data);
 	BST * addNode(BST* root, const int data);
 
+	int largestBranch();
+
+	int smallestBranch();
+
+	int numberOfNodes();
+	
+	bool balancedTree();
+
+	bool complete();
+
+	//int checkComplete(bool ifComplete);
+
 	BST * deleteTree();
 
 	//void deleteTree(); // deletes entire tree
