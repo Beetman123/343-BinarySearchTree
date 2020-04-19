@@ -37,7 +37,8 @@ public:
 
 	bool complete();
 
-	//int checkComplete(bool ifComplete);
+	// ifComplete must be equal to true when called for function to work
+	int checkComplete(bool ifComplete);
 
 	BST * deleteTree();
 

@@ -246,10 +246,57 @@ bool BST::complete()
 	// else return true
 	else
 	{
-		int length;
+		bool ifCompleteTree = true;
+		this->checkComplete(ifCompleteTree);
+
+		if (ifCompleteTree)
+		{
+			return true;
+		}
+
+		else
+		{
+			return false;
+		}
 
 	}
 
+}
+
+int BST::checkComplete(bool ifComplete)
+{
+	int sizeLeft = 0,
+		sizeRight = 0;
+
+	// check left
+	if (right != nullptr)
+	{
+		sizeRight = right->largestBranch();
+	}
+
+	if (left != nullptr)
+	{
+		sizeLeft = left->largestBranch();
+	}
+
+	// if both are empty
+	if (left == nullptr && right == nullptr)
+	{
+		return 1;
+	}
+
+	// if left is bigger then right
+	else if (sizeLeft > sizeRight)
+	{
+		return 1 + sizeLeft;
+	}
+
+	// if right is bigger then left 
+	else
+	{
+		ifComplete = false;
+		return 1 + sizeRight;
+	}
 }
 
 BST * BST::deleteTree()
